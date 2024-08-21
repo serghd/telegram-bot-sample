@@ -3,7 +3,7 @@ import { App } from "./core/App";
 import { Services } from "./services/Services";
 
 export const services = new Services();
-const app = new App();
+const app = new App(services);
 
 services.init().then(() => {
    app.start();

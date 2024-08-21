@@ -7,6 +7,7 @@ const isDebug = toBoolean(env.DEBUG);
 export const config = Object.freeze({
    debug: isDebug,
    port: Number(env.PORT) || 3001,
+   telegramBotToken: String(env.TELEGRAM_BOT_TOKEN),
    database: {
       host: env.DATABASE_HOST,
       port: Number(env.DATABASE_PORT || 3306),

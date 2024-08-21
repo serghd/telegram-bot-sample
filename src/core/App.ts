@@ -1,16 +1,17 @@
 import fastify, { FastifyInstance } from "fastify";
-import { appRouter } from "../web/appRouter";
+import { registerRoutes} from "../web/appRouter";
 import { Server } from "http";
 import { config } from "../config";
+import { Services } from "services/Services";
 
 export class App {
    private server: FastifyInstance<Server>;
 
-   constructor() {
+   constructor(services: Services) {
       this.server = fastify({
-         logger: config.debug,
+         logger: config.debug
       });
-      this.server.register(appRouter);
+      registerRoutes(this.server, services);
    }
 
    public start(): void {
