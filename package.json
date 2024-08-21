@@ -1,0 +1,47 @@
+{
+  "name": "telegram-trading-bot",
+  "version": "1.0.0",
+  "description": "Telegram Trading Bot v.1",
+  "scripts": {
+    "build": "rimraf dist && tsc && tsc-alias",
+    "start": "env-cmd -f .env node dist/index.js",
+    "format": "prettier --config ./.prettierrc.yml --write \"src/**/*.ts\"",
+    "commit": "git-cz",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "typeorm:migration-create": "env-cmd -f .env yarn run typeorm migration:create './src/db/migrations/init'",
+    "typeorm:migration-generate": "env-cmd -f .env yarn run typeorm -d src/db/dataSource.ts migration:generate 'src/db/migrations/init'",
+    "typeorm:migration-run-fake": "env-cmd -f .env yarn run typeorm -d src/db/dataSource.ts migration:run --fake",
+    "typeorm:migration-run": "env-cmd -f .env yarn run typeorm -d src/db/dataSource.ts migration:run",
+    "typeorm:db-drop": "env-cmd -f .env yarn typeorm -d src/db/dataSource.ts schema:drop"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "axios": "1.6.7",
+    "dayjs": "^1.11.7",
+    "fastify": "4.10.2",
+    "joi": "^17.7.0",
+    "mysql": "^2.18.1",
+    "node-schedule": "^2.1.1",
+    "redis": "^4.6.5",
+    "tsc-alias": "1.8.2",
+    "typeorm": "^0.3.12",
+    "typeorm-extension": "^2.5.4",
+    "ws": "8.17.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.15.13",
+    "@types/node-schedule": "2.1.0",
+    "@types/ws": "^8.5.4",
+    "commitizen": "^4.3.0",
+    "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "env-cmd": "10.1.0",
+    "fastify-tsconfig": "1.0.1",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.0",
+    "rimraf": "3.0.2",
+    "ts-node": "10.9.1",
+    "tsconfig-paths": "3.14.2",
+    "typescript": "4.9.3"
+  }
+}

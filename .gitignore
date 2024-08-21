@@ -1,0 +1,12 @@
+#build
+dist
+temp
+
+# dependencies
+node_modules
+.vscode
+yarn-error.log
+.env
+.env.dev
+
+.idea
