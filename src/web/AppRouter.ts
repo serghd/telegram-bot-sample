@@ -5,6 +5,6 @@ import { defaultRoute } from "./routes/default.route";
 
 export function registerRoutes(fastify: FastifyInstance, services: Services) {
    fastify.get(`/${DEFAULT_ROUTE_URL}`, (request, reply) => {
-     defaultRoute(request, reply, services);
+      defaultRoute(request, reply, services);
    });
- }
+}

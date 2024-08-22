@@ -1,5 +1,6 @@
 import fastify, { FastifyInstance } from "fastify";
-import { registerRoutes} from "../web/appRouter";
+import { startBot } from "../web/BotProcessing";
+import { registerRoutes } from "../web/AppRouter";
 import { Server } from "http";
 import { config } from "../config";
 import { Services } from "services/Services";
@@ -9,9 +10,11 @@ export class App {
 
    constructor(services: Services) {
       this.server = fastify({
-         logger: config.debug
+         logger: config.debug,
       });
+
       registerRoutes(this.server, services);
+      startBot(services);
    }
 
    public start(): void {
